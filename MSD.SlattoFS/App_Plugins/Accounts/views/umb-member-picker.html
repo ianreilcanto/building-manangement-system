@@ -1,0 +1,17 @@
+﻿<div>
+    <ul class="unstyled list-icons" ng-if="node">
+        <li>
+            <i class="icon icon-delete red hover-show" ng-click="removeMember()"></i>
+            <i class="icon pull-right {{node.icon}} hover-hide"></i>
+            {{node.name}}
+        </li>
+    </ul>
+    <ul class="unstyled list-icons">
+        <li>
+            <i class="icon icon-add blue"></i>
+            <a href ng-click="openMemberPicker()" prevent-default>
+                Select
+            </a>
+        </li>
+    </ul>
+</div>

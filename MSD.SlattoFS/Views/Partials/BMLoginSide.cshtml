@@ -1,0 +1,31 @@
+﻿@using Umbraco.Web.Controllers
+@using Umbraco.Web.Models
+@using MSD.SlattoFS.Controllers
+@inherits UmbracoTemplatePage
+@{
+    var loginModel = new LoginModel();
+}
+@if (!Members.IsLoggedIn())
+{
+    using (Html.BeginUmbracoForm<BMAccountController>("BMAccountLogin", FormMethod.Post))
+    {
+        <fieldset div class="span4">
+            <center>
+                <div>
+                    @Html.ValidationSummary("loginModel", true)
+                    @Html.LabelFor(m => loginModel.Username)
+                    @Html.ValidationMessageFor(m => loginModel.Username)
+                    @Html.TextBoxFor(m => loginModel.Username, new { @class = "form-control col-xs-2" })
+                </div>
+                <div>
+                    @Html.LabelFor(m => loginModel.Password)
+                    @Html.ValidationMessageFor(m => loginModel.Password)
+                    @Html.PasswordFor(m => loginModel.Password, new { @class = "form-control" })
+                    <br />
+                    @Html.HiddenFor(m => loginModel.RedirectUrl)
+                </div>
+                <button class="btn btn-default">Login</button>
+            </center>
+        </fieldset>
+    }
+}

@@ -1,0 +1,38 @@
+﻿@using Umbraco.Web.Controllers
+@using Umbraco.Web.Models
+@using MSD.SlattoFS.Controllers
+@inherits UmbracoTemplatePage
+<li>
+    @{
+        var loginModel = new LoginModel();
+    }
+    @if (!Members.IsLoggedIn())
+    {
+        using (Html.BeginUmbracoForm<BMAccountController>("BMAccountLogin", FormMethod.Post, new { @class = "not-logged" }))
+        {
+            <li class="dropdown" id="menuLogin">
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
+                <div class="dropdown-menu" style="width: 250px; padding: 0 10px;">
+                    <fieldset>
+                        <center>
+                            <div>
+                                @Html.ValidationSummary("loginModel", true)
+                                @Html.LabelFor(m => loginModel.Username)
+                                @Html.ValidationMessageFor(m => loginModel.Username)
+                                @Html.TextBoxFor(m => loginModel.Username, new { @class = "form-control col-xs-2" })
+                            </div>
+                            <div>
+                                @Html.LabelFor(m => loginModel.Password)
+                                @Html.ValidationMessageFor(m => loginModel.Password)
+                                @Html.PasswordFor(m => loginModel.Password, new { @class = "form-control" })
+                                <br />
+                                @Html.HiddenFor(m => loginModel.RedirectUrl)
+                            </div>
+                            <button class="btn btn-default">Login</button>
+                        </center>
+                    </fieldset>
+                </div>
+            </li>
+        }
+    }
+</li>

@@ -1,0 +1,8 @@
+﻿{
+	javascript: [
+		'~/App_Plugins/Buildings/js/edit.controller.js',
+		'~/App_Plugins/Buildings/js/delete.controller.js',
+		'~/App_Plugins/Buildings/js/building.resource.js',
+		'~/App_Plugins/Buildings/js/list.controller.js'
+	]
+}

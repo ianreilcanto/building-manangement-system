@@ -1,0 +1,4 @@
+﻿<div ng-controller="BMAccountListPickerController">
+    <input type="text" readonly="readonly" value="{{model.value}}" />
+    <select ng-model="model.value" ng-options="account.id as account.name for account in lists"></select>
+</div>

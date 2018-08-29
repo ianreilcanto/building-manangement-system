@@ -1,0 +1,20 @@
+﻿@using MSD.SlattoFS.Helpers
+@using MSD.SlattoFS.Repositories
+@using MSD.SlattoFS.Controllers
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "BMLayout.cshtml";
+}
+
+<!-- Main -->
+<div id="main-wrapper">
+    <div id="main" class="container">
+        <div class="row">
+            @Html.Breadcrumbs(Model.Content)
+            <div class="12u">
+                @Html.AccountLinks(Model.Content)
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Main -->

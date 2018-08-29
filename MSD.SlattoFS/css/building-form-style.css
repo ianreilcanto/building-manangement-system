@@ -1,0 +1,25 @@
+﻿.address-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+div.address-row:nth-of-type(odd) {
+    background: #E0EFF1;
+}
+
+div.address-row:nth-of-type(even) {
+    background: #B2E0E0;
+}
+
+.building-info-container form fieldset div input,
+.building-info-container form fieldset div textarea {
+    width: 50%;
+}
+
+.cancel-address {
+    margin-top: 5px;
+}
+
+.remove-address {
+    margin-top : 5px;
+}

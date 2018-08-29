@@ -1,0 +1,83 @@
+﻿@using Umbraco.Web;
+@using MSD.SlattoFS.Controllers;
+@using MSD.SlattoFS.Helpers;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "BMLayout.cshtml";
+}
+
+<!-- Main -->
+<div id="main-wrapper">
+    <div id="main" class="container building-info-container">
+        <h3>Create Building Page</h3>
+        @using (Html.BeginUmbracoForm<BMBuildingController>("AddBuilding", null, new { @id = "building_form", @action = "#", @method = "post", @defaultbutton = "submitButton", @class = "form-group col-md-12" }))
+        {
+            <fieldset>
+                <div class="form-group">
+                    @Html.Label("Name", "Name: ")
+                    @Html.TextBox("Name", null, new { @class = "required form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Description", "Description: ")
+                    @Html.TextArea("Description", null, new { @class = "required form-control" })
+                </div>
+
+                <div class="form-group">
+                    <div class="address-container" id="newAddress">
+                        <div name="newAddressLineDIV" class="address-row">
+                            <input value=" required address" name="newAddressLine" hidden="hidden" />
+                            @Html.Label("newAddress1", "Address 1: ")
+                            @Html.TextBox("newAddress1", null, new { @class = "required form-control", @placeholder = "(Street address, P.O. box, company name, c/o )" })
+
+                            @Html.Label("newAddress2", "Address 2: ")
+                            @Html.TextBox("newAddress2", null, new { @class = "form-control", @placeholder = "(Building, unit, apt., floor, etc.)" })
+
+                            @Html.Label("newCity", "City: ")
+                            @Html.TextBox("newCity", null, new { @class = "required form-control" })
+
+                            @Html.Label("newState", "State/Province: ")
+                            @Html.TextBox("newState", null, new { @class = "required form-control" })
+
+                            @Html.Label("newCountry", "Country: ")
+                            @Html.TextBox("newCountry", null, new { @class = "required form-control" })
+
+                            @Html.Label("newZipCode", "Zip Code: ")
+                            @Html.TextBox("newZipCode", null, new { @class = "required form-control" })
+                        </div>
+                    </div>
+                </div>
+                <a href="javascript:addAddress();">Add more addresses</a>
+            </fieldset>
+
+            <fieldset>
+                <input id="submitButton" type="submit" name="Save" class="btn btn-primary save" />
+            </fieldset>
+        }
+
+    </div>
+</div>
+<!-- /Main -->
+
+<script>
+    $(function validator() {
+        var form = $("#building_form");
+        form.validate({
+            errorPlacement: function errorPlacement(error, element) { element.before(error); }
+        });
+    });
+    //overwrite jquery validation checkform function
+    $.validator.prototype.checkForm = function () {
+        //overriden in a specific page
+        this.prepareForm();
+        for (var i = 0, elements = (this.currentElements = this.elements()) ; elements[i]; i++) {
+            if (this.findByName(elements[i].name).length !== undefined && this.findByName(elements[i].name).length > 1) {
+                for (var cnt = 0; cnt < this.findByName(elements[i].name).length; cnt++) {
+                    this.check(this.findByName(elements[i].name)[cnt]);
+                }
+            } else {
+                this.check(elements[i]);
+            }
+        }
+        return this.valid();
+    };
+</script>

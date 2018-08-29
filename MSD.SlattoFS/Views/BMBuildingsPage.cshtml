@@ -1,0 +1,27 @@
+﻿@using MSD.SlattoFS.Helpers
+@using MSD.SlattoFS.Models.ViewModels
+@using MSD.SlattoFS.Helpers
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<BuildingsViewModel>
+@{
+    Layout = "BMLayout.cshtml";
+}
+<!-- Main -->
+<div id="main-wrapper">
+    <div id="main" class="container">
+        <div class="row">
+            @Html.Breadcrumbs(Model.Content)
+            <div class="12u">
+                <!--NOTE: a user scenario where they can select the type of view they wish to set when viewing list of buildings
+                    behavior will be managed by the angular controller that will be bound to this view
+                    -->
+                @* <input type="search" placeholder="Search Building..." />*@
+                @Html.BuildingsActionLinks(Model.Content)
+
+            </div>
+        </div>
+
+        @{ Html.RenderPartial("BMGridListView", Model); }
+
+    </div>
+</div>
+<!-- /Main -->

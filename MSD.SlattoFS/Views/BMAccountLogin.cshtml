@@ -1,0 +1,18 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	Layout = "BMLayout.cshtml";
+}
+<body class="login-body">
+    <div style="text-align:center" class="container" ng-app="loginApp">
+        <div class="container" ng-controller="LoginController">
+            <div class="sqs-block">
+                <hr>
+            </div>
+            <div id="div-login" class="login-container" ng-show="showLogin">
+                <div class="login-field">
+                    @Html.Partial("LoginPartialView")
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

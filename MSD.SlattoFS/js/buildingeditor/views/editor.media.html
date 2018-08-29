@@ -1,0 +1,43 @@
+﻿<div>
+    <ul class="nav nav-tabs">
+        <li><a href="#/info"><i class="fa fa-info-circle"></i> Info</a></li>
+        <li class="active"><a href="#/media"><i class="fa fa-picture-o"></i> Media</a></li>
+        <li><a href="#/configure"><i class="fa fa-pencil-square-o"></i> Editor</a></li>
+    </ul>
+    <div class="configuration-container">
+        <div class="mediatab-upload-section form-group">
+            <span class="btn btn-default btn-file">
+                <span class="btn btn-primary browse-button" onclick="$('.file-upload').click();"><i class="fa fa-folder-open"></i> Browse Files</span>
+                <input class="file-upload" type="file" name="files" multiple onchange="angular.element(this).scope().GetFileDetails(this)" />
+            </span>
+            <input class="file-submit btn btn-primary" type="submit" value="&#xf093; Upload" ng-click="vm.UploadFiles()" />
+
+            <!--<input type="file" name="files" multiple onchange="angular.element(this).scope().GetFileDetails(this)" />
+            <input type="submit" value="Upload" ng-click="vm.UploadFiles()" />-->
+            <!--<p><progress id="pro" value="0"></progress></p>-->
+        </div>
+        <div class="gallery-container">
+            <h5 style="text-transform: none;">Images</h5>
+            <div class="gallery">
+                <ul>
+                    <li class="image-box" ng-repeat="media in vm.MediaFiles | orderBy : 'SortOrder'">
+                        <img width="248" height="166" ng-src="{{media.Url}}" />
+                        <div class="right-side">
+                            <button class="image-delete" type="button" ng-click="vm.RemoveMedia(media)"><i class="fa fa-trash"></i></button>
+                            <input class="form-control" type="text" ng-model="media.Name" value="{{media.Name}}" />
+                            <!--<span>{{media.Name}}</span>-->
+                            <strong>({{media.SortOrder}})</strong>
+                            <span class="button-sort">
+                                <button ng-click="vm.SortUp(media)"><img src="/images/font-awesome_4-6-3_sort-asc_14_0_6e8888_none.png"></button>
+                                <button ng-click="vm.SortDown(media)"><img src="/images/font-awesome_4-6-3_sort-desc_14_0_6e8888_none.png"></button>
+                            </span>
+                        </div>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" ng-click="vm.SaveSort()"><i class="fa fa-save"></i> Save</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

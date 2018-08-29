@@ -1,0 +1,63 @@
+﻿<form name="accountForm"
+      ng-controller="AccountsTree.EditController"
+      ng-show="loaded"
+      ng-submit="save(account)"
+      val-form-manager>
+    <umb-panel>
+        <umb-header>
+
+            <div class="span5">
+                <div class="btn-toolbar pull-right umb-btn-toolbar">
+                    <umb-options-menu ng-show="currentNode"
+                                      current-node="currentNode"
+                                      current-section="{{currentSection}}">
+
+                    </umb-options-menu>
+                </div>
+            </div>
+        </umb-header>
+        <div class="umb-panel-body umb-scrollable row-fluid">
+            <div class="tab-content form-horizontal" style="padding-bottom: 90px">
+                <div class="umb-pane">
+                    <umb-control-group label="Account name" description="Name for this account">
+                        <input type="text" class="umb-editor umb-textstring" ng-model="account.name" required />
+                    </umb-control-group>
+                    <umb-control-group label="E-Mail" description="Account E-mail">
+                        <input type="text" class="umb-editor umb-textstring" ng-model="account.email" required />
+                    </umb-control-group>
+
+                    <umb-control-group label="Account Administrator" description="Pick an Account Administrator">
+                        <umb-member-picker ng-model="account.memberId" />
+                    </umb-control-group>
+
+                    <umb-control-group label="Logo" description="Account logo">
+                        <ul class="unstyled list-icons" ng-if="node">
+                            <li>
+                                <img src="{{node.thumbnail}}" style="width:200px;height:200px">
+                                <i class="icon icon-delete red hover-show pull-right" ng-click="removePicture()"></i>
+                            </li>
+                        </ul>
+                        <ul class="unstyled list-icons" ng-if="node === undefined">
+                            <li>
+                                <i class="icon icon-add blue"></i>
+                                <a ng-click="openMediaPicker()" prevent-default>
+                                    Select
+                                </a>
+                            </li>
+                        </ul>
+                    </umb-control-group>
+
+                    <input style="display:none;" ng-model="account.createdOn" />
+                    <input style="display:none;" ng-model="account.lastModifiedOn" />
+                    <div class="umb-tab-buttons" detect-fold>
+                        <div class="btn-group">
+                            <button type="submit" data-hotkey="ctrl+s" class="btn btn-success">
+                                <localize key="buttons_save">Save</localize>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </umb-panel>
+</form>

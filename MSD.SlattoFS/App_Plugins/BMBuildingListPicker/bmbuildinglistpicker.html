@@ -1,0 +1,4 @@
+﻿<div ng-controller="BMBuildingListPickerController">
+    {{model.value}}
+    <select ng-model="model.value" ng-options="building.id as building.name for building in lists"></select>
+</div>

@@ -1,0 +1,64 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@using System.Web.Mvc.Html
+@using ClientDependency.Core.Mvc
+@using Umbraco.Web
+@using Umbraco.Web.Models
+@using Umbraco.Web.Controllers
+@using MSD.SlattoFS.Controllers
+@{
+    var loginModel = new LoginModel();
+    var redirectUrl = string.Empty;
+
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+    Html.RequiresJs("/umbraco_client/ui/jquery.js");
+    Html.RequiresJs("/umbraco_client/Application/JQuery/jquery.validate.min.js");
+    Html.RequiresJs("/umbraco_client/Application/JQuery/jquery.validate.unobtrusive.min.js");
+
+    if (!string.IsNullOrEmpty(Request.QueryString["redirectUrl"]))
+    {
+        redirectUrl = Request.QueryString["redirectUrl"];
+    }
+    else if (HttpContext.Current.Request.UrlReferrer != null)
+    {
+        var referrer = HttpContext.Current.Request.UrlReferrer;
+        if (referrer.PathAndQuery == "/")
+        {
+            redirectUrl = "/BMAccountDashboard";
+        }
+        else
+        {
+            redirectUrl = referrer.ToString();
+        }
+    }
+    else
+    {
+        redirectUrl = "/BMAccountDashboard/";
+    }
+
+    loginModel.RedirectUrl = redirectUrl;
+
+}
+@* NOTE: This RenderJsHere code should be put on your main template page where the rest of your script tags are placed *@
+@Html.RenderJsHere()
+@using (Html.BeginUmbracoForm<UmbLoginController>("HandleLogin"))
+{
+
+    if (!Members.IsLoggedIn())
+    {
+        <fieldset>
+            <legend>Login </legend>
+            @Html.ValidationSummary("loginModel", true)
+            @Html.LabelFor(m => loginModel.Username)
+            @Html.ValidationMessageFor(m => loginModel.Username)
+            @Html.TextBoxFor(m => loginModel.Username)
+            <br />
+            @Html.LabelFor(m => loginModel.Password)
+            @Html.ValidationMessageFor(m => loginModel.Password)
+            @Html.PasswordFor(m => loginModel.Password)
+            <br />
+            @Html.HiddenFor(x => loginModel.RedirectUrl)
+            <button>Login</button>
+        </fieldset>    }
+}

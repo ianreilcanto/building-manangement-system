@@ -1,0 +1,75 @@
+﻿<div>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#/info"><i class="fa fa-info-circle"></i> Info</a></li>
+        <li><a href="#/media"><i class="fa fa-picture-o"></i> Media</a></li>
+        <li><a href="#/configure"><i class="fa fa-pencil-square-o"></i> Editor</a></li>
+    </ul>
+    <div class="information-container">
+        <div class="infotab-upload-section form-group">
+            <span class="btn btn-default btn-file">
+                <span class="btn btn-primary browse-button" onclick="$('.file-upload').click();"><i class="fa fa-folder-open"></i> Browse Files</span>
+                <input class="file-upload" type="file" name="files" multiple onchange="angular.element(this).scope().GetFileDetails(this)" />
+            </span>
+            <input class="file-submit btn btn-primary" type="submit" value="&#xf093; Upload" ng-click="vm.UploadFiles()" />
+        </div>
+        <div ng-show="vm.Apartments.length == 0">No apartments found.</div>
+
+        <div class="form-group apartment-info">
+            <div class="form-inline">
+                <label>Total no. of apartments: {{apartmentAssignment.TotalApartments}}</label>
+            </div>
+            <div class="form-inline">
+                <label>Apartments assigned in the editor: {{apartmentAssignment.AssignedApartments.length}}</label>
+            </div>
+            <div class="form-inline">
+                <label>Apartments with files: {{apartmentsWithFiles.length}}</label>
+            </div>
+        </div>
+
+        <ul class="apartment-list" ng-show="vm.Apartments.length > 0">
+            <li class="apartment" ng-repeat="apartment in vm.Apartments">
+                <div class="left">
+                    <input class="form-control" type="text" ng-model="apartment.Room" value="{{apartment.Room}}" />
+                </div>
+                <div class="wrapper">
+                    <div class="line"></div>
+                </div>
+                <div class="right">
+                    <div class="control-group">
+                        <div class="apartment-status form-inline">
+                            <label>Status: </label>
+                            <select class="form-control status-drop" ng-model="apartment.StatusId" ng-options="status.Id as status.Name for status in vm.ApartmentStatusList"></select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="apartment-price form-inline">
+                            <label>Price: </label>
+                            <input class="form-group form-control price-text" value="{{apartment.Price}}" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="apartment-size form-inline">
+                            <label>Size: </label>
+                            <input class="form-group form-control size-text" value="{{apartment.Size}}" />
+                        </div>
+                    </div>
+                    <div class="info-upload-section form-group">
+                        <span class="btn btn-default btn-file" style="cursor:pointer;">
+                            <span class="btn btn-primary browse-button"><i class="fa fa-folder-open"></i> Browse Files</span>
+
+                            <input class="info-file-upload{{apartment.Id}}" id="file-upload-{{apartment.Id}}" type="file" name="files" multiple onchange="angular.element(this).scope().GetFileDetails(this)" />
+                        </span>
+                        <input class="file-submit btn btn-primary" type="submit" value="&#xf093; Upload" ng-click="vm.UploadApartmentFiles(apartment)" />
+                    </div>
+                    <span class="btn btn-danger file-asset-none" disabled ng-show="apartment.FileAssets.length == 0">No files found.</span>
+                    <ul class="file-assets" ng-show="apartment.FileAssets.length > 0">
+                        <li ng-repeat="fileAsset in apartment.FileAssets">
+                            <a href="{{fileAsset.Url}}"><span class="btn btn-primary"><i class="fa fa-download"></i> Download File: {{fileAsset.MediaId}}</span></a>
+                        </li>
+                    </ul>
+                    <button class="button-save btn btn-primary" type="button"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

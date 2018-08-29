@@ -1,0 +1,31 @@
+﻿@using MSD.SlattoFS.Helpers
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "BMLayout.cshtml";
+   
+}
+
+<!--TODO: replace these partials with BM<widgetname> or something similar-->
+	@{ Html.RenderPartial("umbHomepageBanner"); }
+<!-- Main -->
+<div id="main-wrapper">
+    @Html.Breadcrumbs(Model.Content)   
+    <div id="main" class="container">
+        @*<div class="row">
+            <div class="12u">
+                 @{ Html.RenderPartial("umbFeatures"); }
+            </div>
+        </div>*@
+        <div class="row">
+            <div class="12u">
+                @{   Html.RenderPartial("umbNewsOverviewWidget"); }
+            </div>
+        </div>
+		<div class="row">
+			<div class="12u">
+				@{ Html.RenderPartial("umbAbout"); }
+			</div>
+		</div>
+    </div>
+</div>
+<!-- /Main -->

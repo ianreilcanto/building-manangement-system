@@ -1,0 +1,9 @@
+﻿{
+	javascript: [
+	    '~/App_Plugins/Accounts/js/edit.controller.js',
+	    '~/App_Plugins/Accounts/js/delete.controller.js',
+		'~/App_Plugins/Accounts/js/resource.js',
+		'~/App_Plugins/Accounts/js/umbMemberPicker.directive.js',
+		'~/App_Plugins/Accounts/js/list.controller.js'
+	]
+}

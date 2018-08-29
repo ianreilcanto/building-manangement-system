@@ -1,0 +1,79 @@
+﻿<form name="buildingForm"
+      ng-controller="BuildingsTree.EditController"
+      ng-show="loaded"
+      ng-submit="save(buildingModel)"
+      val-form-manager>
+    <umb-panel>
+
+        <umb-header>
+            <div class="span7">
+                <umb-content-name placeholder="@placeholders_entername"
+                                  ng-model="buildingModel.building.name" />
+            </div>
+            <div class="span5">
+                <div class="btn-toolbar pull-right umb-btn-toolbar">
+                    <umb-options-menu ng-show="currentNode"
+                                      current-node="currentNode"
+                                      current-section="{{currentSection}}">
+                    </umb-options-menu>
+                </div>
+            </div>
+        </umb-header>
+
+        <div class="umb-panel-body umb-scrollable row-fluid">
+            <div class="tab-content form-horizontal" style="padding-bottom: 90px">
+                <div class="umb-pane">
+
+                    <umb-control-group label="Building Name">
+                        <input type="text" class="umb-editor umb-textstring" ng-model="buildingModel.building.name" required />
+                    </umb-control-group>
+
+                    <!--BMAccountListPicker-->
+                    <umb-control-group label="Account" description="Select Account">
+                        <select ng-controller="BMAccountListPickerController" ng-model="buildingModel.building.accountId" ng-options="account.id as account.name for account in lists"></select>
+                    </umb-control-group>
+
+                    <umb-control-group label="Description">
+                        <input type="text" class="umb-editor umb-textstring" ng-model="buildingModel.building.description" required />
+                    </umb-control-group>
+                    <!--ADDRESSES-->
+                    <div id="address-container" ng-repeat="address in buildingModel.addressList">
+                        <umb-control-group id="address-umb-control-group" label="Address">
+                            <label for="address1">Address 1:</label>
+                            <input type="text" id="address1" class="umb-editor umb-textstring" ng-model="address.Address1" required />
+                            </br><label for="address2">Address 2: </label>
+                            <input type="text" id="address2" class="umb-editor umb-textstring" ng-model="address.Address2"/>
+                            </br><label for="city">City: </label>
+                            <input type="text" id="city" class="umb-textstring" ng-model="address.City" required />
+                            </br><label for="state">State/Province: </label>
+                            <input type="text" id="state" class="umb-textstring" ng-model="address.State_Province" required />
+                            </br><label for="country">Country: </label>
+                            <input type="text" id="country" class="umb-textstring" ng-model="address.Country" required />
+                            </br><label for="zipcode">Zipcode: </label>
+                            <input type="text" id="zipcode" class="umb-textstring" ng-model="address.ZipCode" required />
+                            </br><button id="delete-address" type="button" ng-click="deleteAddress(address.Id,buildingModel.addressList,$index)" class="btn btn-danger">Delete Address</button>
+                        </umb-control-group>
+                    </div>
+
+
+                    <!--<a href="javascript:addAddress();">Add more addresses</a>-->
+                    <a href="" class="btn btn-default" ng-click="addAddress(buildingModel)">Add more addresses</a>
+
+                    <div class="umb-tab-buttons" detect-fold>
+                        <div class="btn-group">
+                            <button type="submit" data-hotkey="ctrl+s" class="btn btn-success">
+                                <localize key="buttons_save">Save</localize>
+                            </button>
+                            <button type="button" ng-controller="BuildingsTree.DeleteController" ng-click="delete(buildingModel.building.id)" class="btn btn-danger">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </umb-panel>
+
+</form>

@@ -1,0 +1,892 @@
+/*
+* Please add your custom styles here!
+* This will be based on Sass and/or susy css framework
+* Some classes/id's has !important to replace/overwrite certain styles as per rule of specificity.
+*/
+/**/
+body, label {
+  font-family: 'Raleway' !important;
+  font-weight: 500 !important;
+}
+
+/*.main-container {
+	transform: translateY(63px);
+}*/
+/**/
+/* Navigation bar */
+.navigation-logo {
+  float: left;
+}
+
+#nav {
+  background: #20262a url("/images/topbg.png") no-repeat center bottom !important;
+  height: auto !important;
+  min-height: 63px;
+}
+#nav .navigation-wrapper {
+  padding: 5px 0;
+}
+#nav .navigation-wrapper .navigation-logo {
+  min-height: 60px;
+  padding: 10px 0;
+}
+#nav .navigation-wrapper .navigation-logo img {
+  float: right;
+}
+#nav ul {
+  margin: 0;
+}
+#nav li a {
+  display: inline !important;
+}
+#nav li:hover {
+  cursor: pointer;
+}
+#nav li.current_page_item a {
+  background: transparent !important;
+  border-bottom: 2px solid #428f87;
+  border-radius: 0;
+  height: 40px;
+}
+#nav li:hover {
+  top: 0 !important;
+}
+#nav li:hover a {
+  background: transparent !important;
+  border-radius: 0;
+  border-bottom: 2px solid #428f87;
+  height: 40px;
+}
+
+/* Navigation bar */
+/* Login */
+.not-logged {
+  display: none;
+}
+
+.logged {
+  float: right;
+  color: #fff;
+  white-space: nowrap;
+}
+.logged label {
+  padding: 0 10px;
+}
+
+/* Login*/
+/* Banner */
+#banner-wrapper {
+  padding: 3em 0 0 !important;
+}
+#banner-wrapper #banner {
+  padding: 0 !important;
+}
+#banner-wrapper #banner .carousel-control {
+  background: transparent !important;
+  opacity: 0;
+  filter: alpha(opacity=50);
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -ms-transition: all 500ms;
+}
+#banner-wrapper #banner .carousel-control:hover {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -ms-transition: all 500ms;
+}
+#banner-wrapper #banner .carousel-inner {
+  /*img {
+  	width: 2560px;
+  	height: 450px;
+  	transition: none;
+  	line-height: 0px;
+  	border-width: 0px;
+  	margin: 0px;
+  	padding: 0px;
+  	letter-spacing: 0px;
+  	font-weight: 400;
+  	font-size: 14px;
+  }*/
+}
+#banner-wrapper #banner .carousel-indicators, #banner-wrapper #banner .carousel-caption {
+  bottom: 0 !important;
+}
+#banner-wrapper #banner .banner-controls {
+  background: rgba(0, 0, 0, 0.5);
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  display: block;
+  z-index: 100;
+  border-radius: 50%;
+  font-size: 20px;
+  color: white;
+  line-height: 40px;
+  text-align: center;
+}
+
+/* Banner */
+/* About */
+.about {
+  margin: 0px;
+  border-width: 0px;
+  padding: 20px 80px 30px;
+  background-color: #49a299;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-style: inherit;
+  color: #fff;
+}
+
+/* About */
+/* Footer */
+#footer {
+  background: #20262a none repeat center top;
+  color: #888888;
+  font-size: 13px;
+  text-align: left !important;
+}
+#footer .row {
+  margin-left: 0 !important;
+}
+#footer .textwidget {
+  font-size: 13px !important;
+  font: normal 14px / 24px "Raleway", Helvetica, Arial, Verdana, sans-serif;
+}
+#footer .row + .row > * {
+  padding-top: 0;
+}
+#footer .widget-title {
+  text-transform: uppercase;
+  color: #fff;
+}
+#footer .widget_pages li {
+  display: block;
+  position: relative;
+  margin: 9px 0 0 0;
+  padding: 10px 0 0 0;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(136, 136, 136, 0.15);
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+#footer .widget_pages li .children {
+  margin-left: 20px;
+}
+#footer .widget_presscore-blog-posts .recent-posts li {
+  margin-bottom: 5%;
+}
+#footer .widget_presscore-blog-posts .recent-posts li article .wf-td a img {
+  border-radius: 50%;
+}
+#footer .widget_presscore-blog-posts .recent-posts li article .post-content a {
+  color: #fff;
+}
+
+.solid-bg {
+  position: relative;
+  z-index: 9;
+  min-height: 30px;
+  margin: 0 auto;
+  background: #ffffff none repeat center top;
+  line-height: 21px;
+  height: 60px;
+  background: #ffffff none repeat center top;
+}
+
+/* Footer */
+/* Contact Error Report Form */
+.contact-error-form {
+  background: #3B7982;
+}
+
+.vc_column-inner {
+  padding: 12px 12px 15px;
+}
+
+.contact-error-submit,
+.contact-rent-submit {
+  display: block;
+  color: #fff;
+  background-color: #49a299;
+  border-radius: 3px;
+  border: 0;
+  padding: 10px;
+}
+
+.contact-rent {
+  background: #B2D67A;
+}
+
+/* Contact Error Report Form */
+/* About Us */
+.wpb_text_column p {
+  color: #888888;
+  line-height: 24px;
+}
+
+.vc_custom_1440401894241 {
+  padding-top: 15px !important;
+  padding-right: 30px !important;
+  padding-bottom: 20px !important;
+  padding-left: 30px !important;
+  background-color: #90d4d3 !important;
+}
+.vc_custom_1440401894241 a:hover {
+  text-decoration: none;
+}
+
+.vc_custom_1440401873318 {
+  padding-top: 15px !important;
+  padding-right: 30px !important;
+  padding-bottom: 20px !important;
+  padding-left: 30px !important;
+  background-color: #49a299 !important;
+}
+.vc_custom_1440401873318 a:hover {
+  text-decoration: none;
+}
+
+/* About Us */
+/* Grid List View */
+.grid-list-header {
+  border-bottom: 1px solid #f6f6f6;
+  padding-bottom: 15px;
+}
+
+.glyphicon {
+  margin-right: 5px;
+}
+
+.thumbnail {
+  margin-bottom: 20px;
+  padding: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  border: 0;
+  background: #F6F6F6;
+  min-height: 530px;
+}
+.thumbnail .caption {
+  padding: 20px;
+}
+.thumbnail .caption h4 {
+  text-transform: none;
+}
+.thumbnail .caption h4 a:hover {
+  color: #49a299;
+  text-decoration: none;
+}
+.thumbnail .caption .building-description {
+  font: normal 14px / 24px "Raleway", Helvetica, Arial, Verdana, sans-serif;
+  word-spacing: normal;
+  color: #888888;
+}
+.thumbnail .caption .building-address {
+  color: rgba(136, 136, 136, 0.5);
+  font-size: 12px;
+}
+.thumbnail img {
+  width: 360px !important;
+  height: 250px !important;
+}
+
+/* Hover effect
+.thumbnail {
+	img {
+		width: 400px;
+		height: 250px;
+	}
+	img:hover {
+		cursor: pointer;
+		opacity: 0.4;
+		-webkit-transition: all 500ms;
+		-moz-transition: all 500ms;
+		-ms-transition: all 500ms;
+	}
+}*/
+.grid-group-item {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -ms-transition: all 500ms;
+}
+
+.list-group-item {
+  border: 0;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -ms-transition: all 500ms;
+}
+
+.item.list-group-item {
+  float: none;
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+
+.item.list-group-item .list-group-image {
+  margin-right: 10px;
+}
+
+.item.list-group-item .thumbnail {
+  margin-bottom: 0px;
+}
+
+.item.list-group-item .caption {
+  padding: 9px 9px 0px 9px;
+}
+
+.item.list-group-item:before, .item.list-group-item:after {
+  display: table;
+  content: " ";
+}
+
+.item.list-group-item img {
+  float: left;
+}
+
+.item.list-group-item:after {
+  clear: both;
+}
+
+.list-group-item-text {
+  margin: 0 0 11px;
+}
+
+/* Grid List View */
+.contact-banner,
+.about-banner {
+  transform: translateY(63px);
+  left: 0 !important;
+}
+.contact-banner .tp-caption img,
+.about-banner .tp-caption img {
+  width: 100% !important;
+}
+
+.contact-text,
+.about-text {
+  transform: translateY(63px);
+  left: 45% !important;
+}
+
+.save, .delete {
+  width: 70px;
+}
+
+/* Configuration Page - Media */
+.nav-tabs > li > a, .nav-tabs > li.active > a {
+  color: #000;
+}
+.nav-tabs > li > a i, .nav-tabs > li.active > a i {
+  color: #000;
+}
+
+.nav-tabs > li > a {
+  border: 1px solid #ddd;
+}
+
+.nav-tabs > li.active > a {
+  border-bottom-color: transparent;
+}
+
+.information-container, .configuration-container {
+  background: #fbfbfb;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-top-color: transparent;
+}
+.information-container .info-upload-section, .information-container .infotab-upload-section, .information-container .mediatab-upload-section, .configuration-container .info-upload-section, .configuration-container .infotab-upload-section, .configuration-container .mediatab-upload-section {
+  border-bottom: 1px solid #ccc;
+  padding: 2%;
+  margin-bottom: 0;
+}
+.information-container .info-upload-section input, .information-container .infotab-upload-section input, .information-container .mediatab-upload-section input, .configuration-container .info-upload-section input, .configuration-container .infotab-upload-section input, .configuration-container .mediatab-upload-section input {
+  border: 0;
+}
+.information-container .info-upload-section input[type="button"], .information-container .infotab-upload-section input[type="button"], .information-container .mediatab-upload-section input[type="button"], .configuration-container .info-upload-section input[type="button"], .configuration-container .infotab-upload-section input[type="button"], .configuration-container .mediatab-upload-section input[type="button"] {
+  cursor: crosshair !important;
+  border: none;
+}
+.information-container .info-upload-section .btn-default:hover, .information-container .infotab-upload-section .btn-default:hover, .information-container .mediatab-upload-section .btn-default:hover, .configuration-container .info-upload-section .btn-default:hover, .configuration-container .infotab-upload-section .btn-default:hover, .configuration-container .mediatab-upload-section .btn-default:hover {
+  background-color: #fff;
+}
+.information-container .info-upload-section .btn-file, .information-container .infotab-upload-section .btn-file, .information-container .mediatab-upload-section .btn-file, .configuration-container .info-upload-section .btn-file, .configuration-container .infotab-upload-section .btn-file, .configuration-container .mediatab-upload-section .btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.information-container .info-upload-section .browse-button, .information-container .infotab-upload-section .browse-button, .information-container .mediatab-upload-section .browse-button, .configuration-container .info-upload-section .browse-button, .configuration-container .infotab-upload-section .browse-button, .configuration-container .mediatab-upload-section .browse-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 10;
+  border-radius: 3px 1px 1px 3px;
+}
+.information-container .info-upload-section .btn-file input[type=file], .information-container .infotab-upload-section .btn-file input[type=file], .information-container .mediatab-upload-section .btn-file input[type=file], .configuration-container .info-upload-section .btn-file input[type=file], .configuration-container .infotab-upload-section .btn-file input[type=file], .configuration-container .mediatab-upload-section .btn-file input[type=file] {
+  min-width: 100%;
+  min-height: 100%;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+  position: relative;
+  right: -8px;
+}
+.information-container .file-upload::before, .configuration-container .file-upload::before {
+  border: none;
+}
+.information-container .file-submit, .configuration-container .file-submit {
+  font-family: FontAwesome, 'Open Sans Condensed', sans-serif;
+}
+.information-container .gallery-container, .configuration-container .gallery-container {
+  padding: 0 2%;
+}
+.information-container .gallery-container .gallery, .configuration-container .gallery-container .gallery {
+  width: 100%;
+  padding: 0 2%;
+}
+.information-container .gallery-container .gallery ul, .configuration-container .gallery-container .gallery ul {
+  width: 70%;
+}
+.information-container .gallery-container .gallery ul .image-box, .configuration-container .gallery-container .gallery ul .image-box {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 94%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  background: #f8f8f6;
+  box-shadow: 5px 5px 5px #b4b4b4;
+  margin-bottom: 30px;
+  padding: 0;
+}
+.information-container .gallery-container .gallery ul .image-box img, .configuration-container .gallery-container .gallery ul .image-box img {
+  float: left;
+}
+.information-container .gallery-container .gallery ul .image-box .right-side, .configuration-container .gallery-container .gallery ul .image-box .right-side {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  padding: 2%;
+  margin-left: 2%;
+}
+.information-container .gallery-container .gallery ul .image-box .button-sort, .configuration-container .gallery-container .gallery ul .image-box .button-sort {
+  width: 25px;
+  float: right;
+  margin-top: 5px;
+}
+.information-container .gallery-container .gallery ul .image-box .button-sort button, .configuration-container .gallery-container .gallery ul .image-box .button-sort button {
+  border: none;
+  background: none;
+  height: 10px;
+  display: table;
+  vertical-align: middle;
+  width: auto;
+  margin: 0;
+  float: left;
+  clear: left;
+}
+.information-container .gallery-container .gallery ul .image-box .button-sort button img, .configuration-container .gallery-container .gallery ul .image-box .button-sort button img {
+  width: 10px;
+}
+.information-container .gallery-container .gallery ul li input, .configuration-container .gallery-container .gallery ul li input {
+  width: 70%;
+  display: inline;
+}
+.information-container .gallery-container .gallery ul li .image-delete, .configuration-container .gallery-container .gallery ul li .image-delete {
+  border: 0;
+  background: #d73c3c;
+  color: #fff;
+  border-radius: 3px;
+}
+
+/* Configuration Page - Media */
+/* Configuration Page - Info */
+.information-container {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  padding: 0;
+}
+.information-container .apartment-info {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 0;
+  padding: 2%;
+}
+.information-container .apartment-list {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 70%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  padding: 2%;
+}
+.information-container .apartment-list .apartment {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  min-height: 265px;
+  padding: 2%;
+  background: #f8f8f6;
+  box-shadow: 5px 5px 5px #b4b4b4;
+  margin-bottom: 4px;
+}
+.information-container .apartment-list .apartment .left {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 33.33333%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+}
+.information-container .apartment-list .apartment .wrapper {
+  display: block;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 6.66667%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  position: relative;
+  width: 30px;
+  height: 235px;
+}
+.information-container .apartment-list .apartment .wrapper .line {
+  position: absolute;
+  left: 49%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #ccc;
+  z-index: 1;
+}
+.information-container .apartment-list .apartment .right {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+}
+.information-container .apartment-list .apartment .right .apartment-status, .information-container .apartment-list .apartment .right .apartment-price, .information-container .apartment-list .apartment .right .apartment-size {
+  margin-bottom: 5px;
+}
+.information-container .apartment-list .apartment .right div, .information-container .apartment-list .apartment .right span {
+  float: left;
+  clear: left;
+}
+.information-container .apartment-list .apartment .right label {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 30%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  float: none;
+  width: 105px;
+}
+.information-container .apartment-list .apartment .right .status-drop, .information-container .apartment-list .apartment .right .price-text, .information-container .apartment-list .apartment .right .size-text {
+  width: 150px;
+}
+.information-container .apartment-list .apartment .right .info-upload-section {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  border: 0;
+  margin: 0 0 5px 0;
+  padding: 0;
+}
+.information-container .apartment-list .apartment .right .info-upload-section span {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 65%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+}
+.information-container .apartment-list .apartment .right .info-upload-section input {
+  float: left;
+}
+.information-container .apartment-list .apartment .right .info-upload-section .btn-file {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 72%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+}
+.information-container .apartment-list .apartment .right .info-upload-section .btn-file .browse-button {
+  pointer-events: none;
+  width: 110px;
+}
+.information-container .apartment-list .apartment .right .info-upload-section .file-submit {
+  margin: 2px 0 2px 5px;
+}
+.information-container .apartment-list .apartment .right .file-assets {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  padding: 0;
+  margin-bottom: 5px;
+}
+.information-container .apartment-list .apartment .right .file-asset-none {
+  color: red;
+  cursor: no-drop;
+  margin-bottom: 5px;
+}
+.information-container .apartment-list .apartment .right .file-asset-none:hover {
+  background: #d9534f;
+}
+.information-container .apartment-list .apartment .right .button-save {
+  float: left;
+  clear: left;
+}
+.information-container .apartment-list .apartment span {
+  display: block;
+}
+.information-container .apartment-list .apartment:nth-child(odd) {
+  background: #f3f3f3;
+}
+
+/* Configuration Page - Info */
+/* Breadcrumbs */
+.breadcrumb {
+  background-color: transparent;
+}
+
+/* Breadcrumbs */
+/* Account Links */
+.account-list, .building-link, .buildings-link {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  padding: 0;
+}
+.account-list li, .building-link li, .buildings-link li {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 33.33333%;
+  float: left;
+  padding-left: 0.83333%;
+  padding-right: 0.83333%;
+  margin-right: 10px;
+  background: #f8f8f6;
+  box-shadow: 2px 2px 2px #b4b4b4;
+  padding: 2%;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -ms-transition: all 500ms;
+}
+.account-list li .account-link-name, .account-list li .building-link-name, .account-list li .buildings-link-name, .building-link li .account-link-name, .building-link li .building-link-name, .building-link li .buildings-link-name, .buildings-link li .account-link-name, .buildings-link li .building-link-name, .buildings-link li .buildings-link-name {
+  margin-left: 10px;
+}
+.account-list li i, .building-link li i, .buildings-link li i {
+  -webkit-transition: all 100ms;
+  -moz-transition: all 100ms;
+  -ms-transition: all 100ms;
+}
+.account-list li:hover, .building-link li:hover, .buildings-link li:hover {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -ms-transition: all 500ms;
+  background: #cac1c1;
+}
+.account-list li:hover i, .building-link li:hover i, .buildings-link li:hover i {
+  -webkit-transition: all 100ms;
+  -moz-transition: all 100ms;
+  -ms-transition: all 100ms;
+}
+
+/* Account Links */
+/* Slider */
+.arrow-left-icon, .arrow-right-icon {
+  position: relative;
+  font-size: 40px;
+  cursor: pointer;
+  top: -170px;
+}
+
+.arrow-left-icon {
+  float: left;
+  right: 65px;
+}
+
+.arrow-right-icon {
+  float: right;
+  left: 65px;
+}
+
+ul#lightSlider {
+  min-width: 3720px !important;
+}
+
+.clone {
+  border: 1px solid #ccc;
+  padding: 5px;
+  width: auto !important;
+}
+
+/* Slider */
+/* D3 Styles */
+.poly {
+  opacity: .5;
+  fill: #0000ff;
+}
+
+.apt-label {
+  font-weight: 700 !important;
+  margin-left: 10px;
+  display: block;
+}
+
+.poly-selected {
+  opacity: .5;
+  fill: #ff6700;
+}
+
+.disp-none {
+  display: none !important;
+}
+
+.disp-block {
+  display: block !important;
+}
+
+.stroke, .stroke-new {
+  opacity: 1;
+  fill: none;
+  stroke: #000;
+  stroke-width: 2;
+}
+
+.circle {
+  fill: #ff0000;
+}
+
+/*.circle-new {
+  fill: #fff;
+}*/
+.d3-context-menu {
+  position: absolute;
+  display: none;
+  background-color: #f2f2f2;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  min-width: 150px;
+  border: 1px solid #d4d4d4;
+  z-index: 1200;
+}
+
+.d3-context-menu ul {
+  list-style-type: none;
+  margin: 4px 0px;
+  padding: 0px;
+  cursor: default;
+}
+
+.d3-context-menu ul li {
+  padding: 4px 16px;
+}
+
+.d3-context-menu ul li:hover {
+  background-color: #4677f8;
+  color: #fefefe;
+}
+
+ul.image-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li.image-box {
+  float: left;
+}
+
+li.image-box:hover {
+  cursor: pointer;
+}
+
+circle, polygon, polyline {
+  position: absolute;
+  z-index: 999;
+}
+
+.hide-circle {
+  display: none;
+}
+
+/* D3 Styles */
+/*embed style*/
+.embed-body {
+  background: #939393;
+}
+
+.embed-body .lSSlideOuter .lSPager.lSGallery {
+  margin: 0 auto;
+}
+
+.embed-body img.image-content {
+  margin: auto;
+  display: block;
+  max-width: 960px;
+  width: 100%;
+  max-height: 500px !important;
+  height: auto !important;
+}
+
+.embed-body .lSSlideOuter {
+  margin-top: 40px;
+}
+
+/*end style*/

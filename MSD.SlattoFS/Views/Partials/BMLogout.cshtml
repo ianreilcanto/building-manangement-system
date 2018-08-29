@@ -1,0 +1,6 @@
+﻿@using MSD.SlattoFS.Controllers
+@inherits UmbracoTemplatePage
+@using (Html.BeginUmbracoForm<BMAccountController>("BMAccountLogout"))
+{
+    <li>@Members.GetCurrentMember().Name<button> Logout</button></li>
+}

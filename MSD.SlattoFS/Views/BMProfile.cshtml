@@ -1,0 +1,68 @@
+﻿@using MSD.SlattoFS.Helpers
+@using MSD.SlattoFS.Repositories
+@using MSD.SlattoFS.Controllers
+@using MSD.SlattoFS.Web.Models
+@using MSD.SlattoFS.Helpers
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<AccountViewModel>
+@{
+    Layout = "BMLayout.cshtml";
+    var media = Umbraco.Media(Model.ImageId);
+    var mediaurl = media.Url;
+    bool logged = Umbraco.MemberIsLoggedOn();
+}
+
+<!-- Main -->
+<div id="main-wrapper">
+    
+    <div id="main" class="container">
+        <div class="row">
+            @Html.Breadcrumbs(Model.Content)
+        </div>
+        
+        @using (Html.BeginUmbracoForm<BMAccountController>("UpdateAccount", FormMethod.Post, new { @class = "form-group col-md-6" }))
+        {
+            if (@logged == true)
+            {
+                <h2>@Model.Name Account Details</h2>
+                <fieldset>
+                    <input value="@Model.Id" name="id" hidden="hidden" />
+                    <input value="@Model.ImageId" name="ImageId" hidden="hidden" />
+                    <input value="@Model.LastModifiedOn" name="lastmodifiedon" hidden="hidden" />
+                    <input value="@Model.CreatedOn" name="createdon" hidden="hidden" />
+                    <input value="@Model.CreatedBy" name="createdby" hidden="hidden" />
+                    <input value="@Model.ModifiedBy" name="modifiedby" hidden="hidden" />
+
+                    @*<table>
+                        <tr>
+                            <td>@Html.Label("Name", "Name")</td>
+                            <td>@Html.TextBox("Name", @Model.Name)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.Label("Email", "Email")</td>
+                            <td>@Html.TextBox("Email", @Model.Email)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.Label("Account Logo", "Account Logo")</td>
+                            <td><img class="img-responsive" src="@mediaurl" /></td>
+                        </tr>
+                    </table>*@
+                    <div class="form-group">
+                        @Html.Label("Name", "Name")
+                        @Html.TextBox("Name", @Model.Name, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Email", "Email")
+                        @Html.TextBox("Email", @Model.Email, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Account Logo", "Account Logo")
+                        <img class="img-responsive" src="@mediaurl" style="max-width:315px;"/>
+                    </div>
+                </fieldset>
+                <input type="submit" name="update" value="update info" class="btn btn-primary btn-sm save" />
+            }
+
+        }
+    </div>
+</div>
+<!-- /Main -->

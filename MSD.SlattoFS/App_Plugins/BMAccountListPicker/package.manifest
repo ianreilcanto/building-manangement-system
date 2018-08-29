@@ -1,0 +1,16 @@
+﻿{
+	propertyEditors: [		
+		{
+			alias: "BMAccountList.Picker",
+			name: "BMAccount List Picker",
+			hideLabel: false,
+			editor: {
+				view: "~/App_Plugins/BMAccountListPicker/bmaccountlistpicker.html"
+			}
+		}
+	],
+
+	javascript: [
+		'~/App_Plugins/BMAccountListPicker/bmaccountlistpicker.controller.js'
+	]
+}

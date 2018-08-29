@@ -1,0 +1,31 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    // Model.Content is the current page that we're on
+    // AncestorsOrSelf is all of the ancestors this page has in the tree
+    // (1) means: go up to level 1 and stop looking for more ancestors when you get there
+    // First() gets the first ancestor found (the home page, on level 1)
+    var homePage = CurrentPage.AncestorsOrSelf(1).First();
+}
+
+<section id="pages-3" class="widget widget_pages wf-cell wf-1-4">
+    <div class="widget-title"><font><font>quick Links</font></font></div>
+    <ul>
+        <li class="page_item page-item-1058"><a href="http://slattoforvaltning.se/dalenum-fastighet/"><font><font>Dalénum apartments</font></font></a></li>
+        <li class="page_item page-item-1062"><a href="http://slattoforvaltning.se/dalenum-hyresobjekt/"><font><font>Dalénum rental items</font></font></a></li>
+        <li class="page_item page-item-1060"><a href="http://slattoforvaltning.se/dalenum-rum/"><font><font>Dalénum room</font></font></a></li>
+        <li class="page_item page-item-1032"><a href="http://slattoforvaltning.se/dalenum-start/"><font><font>Dalénum start</font></font></a></li>
+        <li class="page_item page-item-33 current_page_item"><a href="http://slattoforvaltning.se/"><font><font>Start</font></font></a></li>
+        <li class="page_item page-item-4 page_item_has_children">
+            <a href="http://slattoforvaltning.se/om-oss/"><font><font>About us</font></font></a>
+            <ul class="children">
+                <li class="page_item page-item-510"><a href="http://slattoforvaltning.se/om-oss/om-slatto/"><font><font>If Slättö</font></font></a></li>
+                <li class="page_item page-item-504"><a href="http://slattoforvaltning.se/om-oss/ledning/"><font><font>Staff</font></font></a></li>
+                <li class="page_item page-item-494"><a href="http://slattoforvaltning.se/om-oss/styrelsen/"><font><font>Board</font></font></a></li>
+            </ul>
+        </li>
+        <li class="page_item page-item-79"><a href="http://slattoforvaltning.se/vara-fastigheter/"><font><font>our properties</font></font></a></li>
+        <li class="page_item page-item-10"><a href="http://slattoforvaltning.se/investerare/"><font><font>Investor</font></font></a></li>
+        <li class="page_item page-item-7"><a href="http://slattoforvaltning.se/nyheter/"><font><font>News</font></font></a></li>
+        <li class="page_item page-item-14"><a href="http://slattoforvaltning.se/kontakt/"><font><font>Contact</font></font></a></li>
+    </ul>
+</section>

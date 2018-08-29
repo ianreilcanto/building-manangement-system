@@ -1,0 +1,144 @@
+﻿@using Umbraco.Web
+@using MSD.SlattoFS.Helpers
+@using MSD.SlattoFS.Models.ViewModels
+@using MSD.SlattoFS.Controllers
+@model SliderViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html ng-app="website">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Model.Name</title>
+
+    <script src="~/js/jquery-1.9.1.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700|Open+Sans+Condensed:700" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/config.js"></script>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+
+    <link href="~/css/bmembedbuildingslider.css" rel="stylesheet" />
+    <link href="~/css/embedSlider.css" rel="stylesheet" />
+
+</head>
+<body class="embed-body">
+
+    <div class="container" ng-controller="MainCtrl">
+        <div class="slider">
+            <div class="svg">
+                <img ng-repeat="slide in slides" class="slide slide-animation nonDraggableImage"
+                     ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}" id="{{slide.imageId}}" onmouseover="displayInfo(this)">
+            </div>
+
+            <div class="left-arrow"></div>
+            <a class="arrow prev" href="#" ng-click="nextSlide()"></a>
+            <a class="arrow next" href="#" ng-click="prevSlide()"></a>
+            <div class="right-arrow"></div>
+            <nav class="nav">
+                <div class="wrapper">
+                    <ul class="dots">
+                        <li class="dot" ng-repeat="slide in slides">
+                            <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
+                               ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container" style="display:none;">
+        @Html.HiddenFor(model => model.Id, new { id = "BuildingId" });
+
+        @foreach (var apartment in @Model.Apartments)
+        {
+            @Html.HiddenFor(model => model.Apartments.Where(x => x.Id == apartment.Id).FirstOrDefault().Name, new { id = "Name" + apartment.Id });
+            @Html.HiddenFor(model => model.Apartments.Where(x => x.Id == apartment.Id).FirstOrDefault().StatusId, new { id = "Status" + apartment.Id });
+            @Html.HiddenFor(model => model.Apartments.Where(x => x.Id == apartment.Id).FirstOrDefault().Size, new { id = "Size" + apartment.Id });
+            @Html.HiddenFor(model => model.Apartments.Where(x => x.Id == apartment.Id).FirstOrDefault().NumberOfRooms, new { id = "NoOfRooms" + apartment.Id });
+            @Html.HiddenFor(model => model.Apartments.Where(x => x.Id == apartment.Id).FirstOrDefault().Price, new { id = "Price" + apartment.Id });
+        }
+        @foreach (var apartmentstatus in @Model.ApartmentStatuses)
+        {
+            @Html.HiddenFor(model => model.ApartmentStatuses.Where(x => x.Id == apartmentstatus.Id).FirstOrDefault().Name, new { id = "StatusName" + apartmentstatus.Id });
+        }
+        @foreach (KeyValuePair<int, string> mediaItem in Model.MediaItems)
+        {
+            var mediaId = mediaItem.Key;
+            var mediaUrl = mediaItem.Value;
+
+            <input class="image-values" type="hidden" id="@mediaId" value="@mediaUrl" />
+        }
+    </div>
+</body>
+
+
+</html>
+<script>
+
+    function displayInfo(imageElement) {
+
+        var mediaId = event.target.id;
+        var img = document.getElementById(mediaId);
+        var width = 0;
+        var height = 0;
+
+        $('.svg').find('svg').remove();
+        $('.tooltip').remove();
+
+        var screenSize = $(window).width();
+
+
+        $.ajax({
+            url: "/BMBuilding/BMBuildingGetSvgEmbedByMediaId",
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ mediaId: mediaId, buildingId: $("#BuildingId").val() }),
+            success: function (result) {
+                $(".svg").prepend(result.svgData);
+
+                $.getScript('/js/bmbuildingpage/setsvg.js', function () {
+                    $.getScript('/js/bmbuildingpage/svg.js', function () { });
+                });
+
+
+            }
+        });
+
+        $('.svg').find('svg').append(imageElement);
+        // $(imageElement).remove();
+    }
+
+    $(".left-arrow").hover(
+        function () {
+     
+            $(".prev").addClass("hover-left");
+        },
+        function () {
+        
+            $(".prev").removeClass("hover-left");
+        }
+     );
+
+    $(".right-arrow").hover(
+        function () {
+            
+            $(".next").addClass("hover-right");
+        },
+        function () {
+          
+            $(".next").removeClass("hover-right");
+        }
+     );
+
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+<script src="~/js/angularSlider/app.js"></script>

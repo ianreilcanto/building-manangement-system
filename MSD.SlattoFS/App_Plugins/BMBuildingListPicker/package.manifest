@@ -1,0 +1,16 @@
+﻿{
+	propertyEditors: [		
+		{
+			alias: "BMBuildingList.Picker",
+			name: "BMBuilding List Picker",
+			hideLabel: false,
+			editor: {
+				view: "~/App_Plugins/BMBuildingListPicker/bmbuildinglistpicker.html"
+			}
+		}
+	],
+
+	javascript: [
+		'~/App_Plugins/BMBuildingListPicker/bmbuildinglistpicker.controller.js'
+	]
+}

@@ -1,0 +1,27 @@
+﻿@using MSD.SlattoFS.Models.ViewModels
+@using MSD.SlattoFS.Helpers
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<BuildingsViewModel>
+    
+    <div class="container">
+        <div class="row grid-list-header">
+            <div class="header-text col-md-9">
+                <h4 style="text-transform:capitalize;"><strong>Building List:</strong></h4>
+            </div>
+            <div class="filter-group col-md-3">
+                <strong>Display: </strong>
+                <div class="btn-group">
+                    <a href="#" id="grid" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-th"></span>Grid
+                    </a>
+                    <a href="#" id="list" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-th-list">
+                        </span>List
+                    </a>
+                </div>
+            </div>
+        </div>        
+
+        <div id="buildings" class="row list-group">
+            @Html.ThumbnailView(Model)          
+        </div>
+    </div>

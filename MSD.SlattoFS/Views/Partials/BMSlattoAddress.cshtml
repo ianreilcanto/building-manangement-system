@@ -1,0 +1,24 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    // Model.Content is the current page that we're on
+    // AncestorsOrSelf is all of the ancestors this page has in the tree
+    // (1) means: go up to level 1 and stop looking for more ancestors when you get there
+    // First() gets the first ancestor found (the home page, on level 1)
+    var homePage = CurrentPage.AncestorsOrSelf(1).First();
+}
+
+<section id="text-2" class="widget widget_text wf-cell wf-1-4">
+	<div class="textwidget">
+		<p><img src="~/images/slatto-logo-mob.png"><br>
+		<b><font><font class="">Slättö AB</font></font></b><br>
+			<font><font class=""> Visiting address </font></font><br>
+			<font><font class="">Engelbrecht gatan 7 </font></font><br>
+			<font><font class="">114 32 Stockholm </font></font><br>
+			<font><font class="">Tel: 0771-650200</font></font></p>
+			<p>
+				<font><font class="">SOCIAL MEDIA</font></font><br>
+				<a href="https://www.linkedin.com/company/10077767?trk=tyah&amp;trkInfo=clickedVertical%3Acompany%2CclickedEntityId%3A10077767%2Cidx%3A1-1-1%2CtarId%3A1445287274665%2Ctas%3Asl%C3%A4tt%C3%B6">
+				<i class="fa fa-linkedin"></i></a>
+			</p>
+	</div>
+</section>

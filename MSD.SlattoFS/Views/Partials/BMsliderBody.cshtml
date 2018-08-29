@@ -1,0 +1,83 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+<div class="row">
+    <div class="col-lg-8">
+        <div class="content">
+            <div id="rg-gallery" class="rg-gallery">
+                <div class="rg-thumbs">
+                    <!-- Elastislide Carousel Thumbnail Viewer -->
+                    <div class="es-carousel-wrapper">
+                        <div class="es-nav">
+                            <span class="es-nav-prev">Previous</span>
+                            <span class="es-nav-next">Next</span>
+                        </div>
+                        <div class="es-carousel">
+                            <ul>
+                                <!-- get data from path of account admin-->
+                                <li><a href="#"><img src="/media/1001/apartment.jpg" data-large="/media/1001/apartment.jpg" alt="image01" data-description="From off a hill whose concave womb reworded" /></a></li>                        
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Elastislide Carousel Thumbnail Viewer -->
+                </div><!-- rg-thumbs -->
+            </div><!-- rg-gallery -->
+        </div><!-- content -->
+    </div>
+    <div class="col-lg-4">
+        @*<button type="button" data-toggle="collapse" data-target="#demo" style="color:#000">Show 3D</button>
+        <div id="demo" class="col-md-12 collapse" style="background:url('images/black.png'); margin-bottom:20px;padding-top:15px;">
+            <div class="sketchfab-embed-wrapper">
+                <iframe style="width:100%" width="640" height="480" src="https://sketchfab.com/models/e73f9bb9981d469c8a8ccdc1f168faad/embed" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+
+
+            </div>
+        </div>*@
+        <div class="col-md-12" style="background:url('images/black.png')">
+            <div class="main-login main-center" style="padding:25px;">
+                <form class="form-horizontal" method="post" action="#">
+
+                    <div class="form-group">
+                        <label for="name" class="cols-sm-2 control-label">Your Name</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="cols-sm-2 control-label">Your Contact Number</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="contact" id="contact" placeholder="Enter your Name" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="cols-sm-2 control-label">Your Email</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment" class="cols-sm-2 control-label">Comment:</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <button type="button" class="btn btn-primary btn-lg btn-block login-button">Subscribe Now!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language>
+  <area alias="sections">
+    <key alias="accounts">Accounts</key>
+    <key alias="buildings">Buildings</key>
+  </area>
+</language>

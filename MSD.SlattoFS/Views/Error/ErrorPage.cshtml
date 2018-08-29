@@ -1,0 +1,15 @@
+﻿@model MSD.SlattoFS.Models.ViewModels.ErrorViewModel
+@{
+    Layout = "ErrorLayout.cshtml";
+}
+
+<div>
+    <hr />
+    <center>
+        <h1>Error @Model.CodeStatus - @Model.Description </h1>
+        <p>@Model.Message</p>
+        <br />
+        <a class="btn" href="/">Go back to home page</a>
+    </center>
+    <hr />
+</div>

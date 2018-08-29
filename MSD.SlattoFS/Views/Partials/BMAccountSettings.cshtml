@@ -1,0 +1,16 @@
+﻿@using Umbraco.Web.Controllers
+@using Umbraco.Web.Models
+@using MSD.SlattoFS.Controllers
+@using MSD.SlattoFS.Helpers
+@inherits UmbracoTemplatePage
+@{
+
+    @Html.AccountSettings(Members, Model.Content)
+    if (Members.IsLoggedIn())
+    {
+        using (Html.BeginUmbracoForm<BMAccountController>("BMAccountLogout",null, new { @class = "logged 3u"}))
+        {
+            <label>@Members.GetCurrentMember().Name</label><button class="btn btn-default">Logout</button>
+        }
+    }
+}

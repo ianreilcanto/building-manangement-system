@@ -1,0 +1,25 @@
+﻿@using MSD.SlattoFS.Models.ViewModels
+@using MSD.SlattoFS.Helpers
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<BuildingConfigViewModel>
+@{
+    Layout = "BMEditorLayout.cshtml";
+}
+<!-- Main -->
+<div id="main-wrapper" ng-app="buildingEditorApp">
+    
+    <div ng-controller="EditorMainController">
+        <!--TODO: MUST BE A BETTER WAY THAN THIS-->
+        <input type="hidden" ng-init="InitializeAccount(@Model.AccountId)" />
+        <input type="hidden" ng-init="InitializeBuilding(@Model.BuildingId)" />
+        <input type="hidden" ng-init="InitializeApartmentStatuses()" />        
+    </div>
+    <div id="main" class="container">
+        <div class="row">
+            @Html.Breadcrumbs(Model.Content)
+        </div>
+        <div ng-view id="ng-view" class="slide-animation">
+            
+        </div>
+    </div>
+</div>
+<!-- /Main -->

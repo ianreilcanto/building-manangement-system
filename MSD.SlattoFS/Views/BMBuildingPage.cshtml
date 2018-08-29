@@ -1,0 +1,111 @@
+﻿@using Umbraco.Web
+@using MSD.SlattoFS.Helpers
+@using MSD.SlattoFS.Models
+@using MSD.SlattoFS.Controllers
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<BuildingViewModel>
+@{
+    Layout = "BMLayout.cshtml";
+}
+<head id="header">
+    <title>@Model.Name</title>
+</head>
+
+<body class="home">
+
+    <!-- Main -->
+    <div id="main-wrapper">
+        <div id="main" class="container">
+            <div class="row">
+                @Html.Breadcrumbs(Model.Content)
+                <div class="12u">
+                    @Html.BuildingActionLinks(Model.Content)
+                </div>
+                <!--TODO: readonly version of the BuildingVIewModel-->
+            </div>
+        </div>
+    </div>
+    <!-- /Main -->
+
+    <link href="~/css/bmbuildingpage-style.css" rel="stylesheet">
+    <script src="~/js/bmbuildingpage/imageviewer.js"></script>
+
+    <div class="container">
+        <ul id="lightSlider">
+            @foreach (var mediaId in Model.MediaItems)
+            {
+                var media = Umbraco.Media(mediaId);
+                var mediaurl = media.Url;
+
+                <li>
+                    <img class="thumb" id="@mediaId" onclick="displayModal()" src="@mediaurl" alt="@Model.Name">
+                </li>
+            }
+        </ul>
+        <i class="arrow-left-icon fa fa-arrow-circle-left" id="goToPrevSlide"></i>
+        <i class="arrow-right-icon fa fa-arrow-circle-right" id="goToNextSlide"></i>
+    </div>
+    @foreach (var mediaId in Model.MediaItems)
+    {
+        var modalId = mediaId + "Modal";
+        var closeId = mediaId + "Close";
+                <!-- The Modal -->
+        <div id="@modalId" class="modal largeimage">
+            <div id="caption"></div>
+            <span id="@closeId" onclick="closeModal()" class="close">×</span>
+            <div class="container">
+                <div class="modal-wrapper" id="svgDiv">
+                    <div class="svg">
+                        <img class="modal-content" id="@mediaId">
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="container">
+        @Html.HiddenFor(model => model.Id, new { id = "BuildingId" });
+
+        @foreach (var apartment in @Model.Apartments)
+        {
+            @Html.HiddenFor(model => model.Apartments.Where(x => x.Id == apartment.Id).FirstOrDefault().Name, new { id = "Name" + apartment.Id });
+            @Html.HiddenFor(model => model.Apartments.Where(x => x.Id == apartment.Id).FirstOrDefault().StatusId, new { id = "Status" + apartment.Id });
+            @Html.HiddenFor(model => model.Apartments.Where(x => x.Id == apartment.Id).FirstOrDefault().Size, new { id = "Size" + apartment.Id });
+            @Html.HiddenFor(model => model.Apartments.Where(x => x.Id == apartment.Id).FirstOrDefault().NumberOfRooms, new { id = "NoOfRooms" + apartment.Id });
+            @Html.HiddenFor(model => model.Apartments.Where(x => x.Id == apartment.Id).FirstOrDefault().Price, new { id = "Price" + apartment.Id });          
+
+        }
+
+        @foreach (var pdfStatus in @Model.PdfStatus)
+        {
+            @Html.HiddenFor(model => model.PdfStatus.Where(x => x.ApartmentId == pdfStatus.ApartmentId).FirstOrDefault().HasPdf, new { id = "hasPdf" + pdfStatus.ApartmentId });
+        }
+
+        @foreach (var apartmentstatus in @Model.ApartmentStatuses)
+        {
+            @Html.HiddenFor(model => model.ApartmentStatuses.Where(x => x.Id == apartmentstatus.Id).FirstOrDefault().Name, new { id = "StatusName" + apartmentstatus.Id });
+        }
+    </div>
+</body>
+
+<script>
+    $(document).ready(function () {
+        var slider = $("#lightSlider").lightSlider({
+            item: 4,
+            autoWidth: true,
+            auto: false,
+            loop: true,
+            enableDrag: false,
+            pager: true,
+            controls: false,
+            onBeforeSlide: function (el) {
+                $('#current').text(el.getCurrentSlideCount());
+            }
+        });
+        $('#goToPrevSlide').on('click', function () {
+            slider.goToPrevSlide();
+        });
+        $('#goToNextSlide').on('click', function () {
+            slider.goToNextSlide();
+        });
+    });
+</script>

@@ -1,0 +1,173 @@
+﻿@using MSD.SlattoFS.Controllers
+@using MSD.SlattoFS.Helpers;
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<MSD.SlattoFS.Models.BuildingViewModel>
+@{
+    Layout = "BMLayout.cshtml";
+}
+
+
+<!-- Main -->
+<div id="main-wrapper">
+    <div id="main" class="container building-info-container">
+        <div class="row">
+            <div class="12u">
+                <h3>Building-Specific Page</h3>
+            </div>
+        </div>
+        @{int addressCount = 1;}
+
+        @using (Html.BeginUmbracoForm<BMBuildingController>("UpdateBuilding", null, new { @id = "building_form", @action = "#", @method = "post", @defaultbutton = "updateButton", @class = "form-group col-md-12" }))
+        {
+
+            <fieldset>
+                <input value="@Model.Id" id="buildingId" name="Id" hidden="hidden" />
+                <input value="@Model.AccountId" name="AccountId" hidden="hidden" />
+                <input value="@Model.CreatedBy" name="CreatedBy" hidden="hidden" />
+                <input value="@Model.CreatedOn" name="CreatedOn" hidden="hidden" />
+                <input value="@Model.Logo" name="Logo" hidden="hidden" />
+                <div class="form-group">
+                    @Html.Label("Name", "Name: ")
+                    @Html.TextBox("Name", @Model.Name, new { @class = "required form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.Label("Description", "Description: ")
+                    @Html.TextArea("Description", @Model.Description, new { @class = "required form-control" })
+                </div>
+                @{
+
+                    var base_url = HttpContext.Current.Request.Url.Host;
+                }
+                <div class="form-group">
+                    @Html.Label("Guid", "Embed Link: ", new { @style = "display:block" })
+                    @Html.TextBox("Guid", base_url + "/embed/" + @Model.Guid, new { @class = "form-control", @style = "float:left", id = "embed-link", @readonly="" })
+                    <span style="float:left;margin-left:10px;" class="btn btn-info glyphicon glyphicon-copy copy-btn" data-clipboard-action="copy" data-clipboard-target="#embed-link"></span>
+                </div>
+                <br />
+                <br />
+                <div class="address-container" id="newAddress">
+                    @*collection addresses*@
+                    @foreach (var address in @Model.Addresses)
+                    {
+                        var addressLineId = "addressLine" + address.Id;
+                        <div id=@addressLineId class="form-group address-row">
+                            @Html.TextBox("Address" + addressCount, address.Id, new { @hidden = "hidden" })
+
+                            @Html.Label("Address" + addressCount + "_Address1", "Address 1: ")
+                            @Html.TextBox("Address" + addressCount + "_Address1", address.Address1, new { @class = "required form-control", @placeholder = "(Street address, P.O. box, company name, c/o )" })
+
+                            @Html.Label("Address" + addressCount + "_Address2", "Address 2: ")
+                            @Html.TextBox("Address" + addressCount + "_Address2", address.Address2, new { @class = "form-control", @placeholder = "(Building, unit, apt., floor, etc.)" })
+
+                            @Html.Label("Address" + addressCount + "_City", "City: ")
+                            @Html.TextBox("Address" + addressCount + "_City", address.City, new { @class = "required form-control" })
+
+                            @Html.Label("Address" + addressCount + "_State", "State/Province: ")
+                            @Html.TextBox("Address" + addressCount + "_State", address.State_Province, new { @class = "required form-control" })
+
+                            @Html.Label("Address" + addressCount + "_Country", "Country: ")
+                            @Html.TextBox("Address" + addressCount + "_Country", address.Country, new { @class = "required form-control" })
+
+                            @Html.Label("Address" + addressCount + "_ZipCode", "Zip Code: ")
+                            @Html.TextBox("Address" + addressCount + "_ZipCode", address.ZipCode, new { @class = "required form-control" })
+
+
+                            @Html.TextBox("Address" + addressCount + "_Id", address.Id, new { @class = "required", @hidden = "hidden" })
+                            @{string buttonId = "deleteAddress" + addressCount;}
+                            <input class="btn btn-danger remove-address" type="button" value="Remove Address" id=@buttonId onclick="deleteBuildingAddress()" />
+                        </div>
+
+                                    addressCount++;
+                                }
+                    <input value=@addressCount id="AddressCount" name="AddressCount" hidden="hidden" />
+                </div>
+                <a href="javascript:addAddress();">Add more addresses</a>
+            </fieldset>
+            <fieldset>
+                <input id="updateButton" type="submit" name="updateBuilding" class="btn btn-primary save" value="Update" />
+            </fieldset>
+
+                                }
+
+        @using (Html.BeginUmbracoForm<BMBuildingController>("DeleteBuilding", null, new { @action = "#", @method = "post", @onsubmit = "return confirm('Do you really want to Delete this building?');", @class = "form-group col-md-12" }))
+            {
+            <fieldset>
+                <input value="@Model.Id" name="Id" hidden="hidden" />
+                <input type="submit" name="Delete" class="btn btn-warning" value="Delete" />
+            </fieldset>
+            <br />
+            <fieldset>
+                <a href="@Model.Content.Parent.Url" class="btn btn-primary">back</a>
+            </fieldset>
+        }
+
+
+
+
+    </div>
+</div>
+
+<!-- /Main -->
+<script src="~/js/clipboard.min.js"></script>
+<script>
+
+    $(function validator() {
+
+        var form = $("#building_form");
+        form.validate({
+            errorPlacement: function errorPlacement(error, element) { element.before(error); }
+        });
+      
+    });
+
+    //overwrite jquery validation checkform function
+    $.validator.prototype.checkForm = function () {
+        //overriden in a specific page
+        this.prepareForm();
+        for (var i = 0, elements = (this.currentElements = this.elements()) ; elements[i]; i++) {
+            if (this.findByName(elements[i].name).length !== undefined && this.findByName(elements[i].name).length > 1) {
+                for (var cnt = 0; cnt < this.findByName(elements[i].name).length; cnt++) {
+                    this.check(this.findByName(elements[i].name)[cnt]);
+                }
+            } else {
+                this.check(elements[i]);
+            }
+        }
+        return this.valid();
+    };
+
+    function deleteBuildingAddress() {
+        var buttonId = event.target.id;
+        buttonId = buttonId.slice(13);
+        var buildingId = $("#buildingId").val();
+        var addressId = $("#Address" + buttonId + "_Id").val();
+
+        $.ajax({
+
+            url: "/BMBuilding/DeleteAddress/" + addressId + "/" + buildingId,
+            dataType: 'json',
+            contentType: 'application/json',
+            type: "POST"
+
+        }).then(function (responseData) {
+            if (responseData.addressId != 0) {
+                $("#addressLine" + responseData.addressId).hide();
+            }
+            else {
+                alert(responseData.message);
+            }
+        });
+    }
+
+    //copy clipboard
+    var clipboard = new Clipboard('.copy-btn');
+
+    clipboard.on('success', function (e) {
+        console.log(e);
+    });
+
+    clipboard.on('error', function (e) {
+        console.log(e);
+    });
+  
+
+</script>

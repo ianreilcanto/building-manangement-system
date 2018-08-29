@@ -1,0 +1,64 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    // Model.Content is the current page that we're on
+    // AncestorsOrSelf is all of the ancestors this page has in the tree
+    // (1) means: go up to level 1 and stop looking for more ancestors when you get there
+    // First() gets the first ancestor found (the home page, on level 1)
+    var homePage = CurrentPage.AncestorsOrSelf(1).First();
+}
+
+<section id="presscore-blog-posts-2" class="widget widget_presscore-blog-posts wf-cell wf-1-4">
+    <div class="widget-title"><font><font class="goog-text-highlight">News</font></font>
+    </div>
+    <ul class="recent-posts round-images">
+        <li class="12u">
+            <article class="post-format-standard">
+                <div class="wf-td 2u"><a class="alignleft post-rollover this-ready material-click-effect ripplelink" href="http://slattoforvaltning.se/slatto-vinner-markanvisning-i-orebro/">
+                    <span class="ink" style="height: 40px; width: 40px;"></span>
+                    <img class="lazy-load preload-me is-loaded" src="http://media.slattoforvaltning.se/2016/06/Örnsro-3-40x40.png" width="40" height="40" alt="" sizes="40px" srcset="http://media.slattoforvaltning.se/2016/06/Örnsro-3-40x40.png 40w, http://media.slattoforvaltning.se/2016/06/Örnsro-3-80x80.png 80w"><i></i>
+                    </a>
+                </div>
+                <div class="post-content 7u">
+                    <a href="http://slattoforvaltning.se/slatto-vinner-markanvisning-i-orebro/"><font><font>Slättö win land allocation in Örebro</font></font></a><br>
+                    <time class="text-secondary" datetime="2016-06-01T11:57:49+00:00"><font><font>June 1, 2016</font></font></time>
+                </div>
+            </article>
+        </li>
+        <li class="12u">
+            <article class="post-format-standard">
+            <div class="wf-td 2u">
+                <a class="alignleft post-rollover this-ready material-click-effect ripplelink" href="http://slattoforvaltning.se/malin-albertin-ny-projektchef-pa-slatto/">
+                    <span class="ink" style="height: 40px; width: 40px;"></span><img class="lazy-load preload-me is-loaded" src="http://media.slattoforvaltning.se/2016/05/Malin-nyhet-40x40.jpg" width="40" height="40" alt="" sizes="40px" srcset="http://media.slattoforvaltning.se/2016/05/Malin-nyhet-40x40.jpg 40w, http://media.slattoforvaltning.se/2016/05/Malin-nyhet-80x80.jpg 80w"><i></i>
+                </a>
+                </div>
+                <div class="post-content 7u">
+                <a href="http://slattoforvaltning.se/malin-albertin-ny-projektchef-pa-slatto/"><font><font>Malin Albertin new project manager at Slättö</font></font></a><br>
+                    <time class="text-secondary" datetime="2016-04-29T08:12:57+00:00"><font><font>April 29, 2016</font></font></time>
+                </div>
+            </article>
+        </li>
+        <li class="12u">
+            <article class="post-format-standard">
+                <div class="wf-td 2u">
+                    <a class="alignleft post-rollover this-ready material-click-effect ripplelink" href="http://slattoforvaltning.se/slatto-erhaller-aifm-tillstand-fran-finansinspektionen/"><span class="ink" style="height: 40px; width: 40px;"></span><img class="lazy-load preload-me is-loaded" src="http://media.slattoforvaltning.se/2016/04/FI-40x40.jpg" width="40" height="40" alt="" sizes="40px" srcset="http://media.slattoforvaltning.se/2016/04/FI-40x40.jpg 40w, http://media.slattoforvaltning.se/2016/04/FI-80x80.jpg 80w"><i></i></a>
+                </div>
+                <div class="post-content 7u"><a href="http://slattoforvaltning.se/slatto-erhaller-aifm-tillstand-fran-finansinspektionen/"><font><font>Slättö receive AIFM permission from the FSA</font></font></a><br>
+                    <time class="text-secondary" datetime="2016-04-18T11:29:12+00:00"><font><font>April 18, 2016</font></font></time>
+                </div>
+            </article>
+        </li>
+        <li class="12u">
+            <article class="post-format-standard">
+                <div class="wf-td 2u">
+                    <a class="alignleft post-rollover this-ready material-click-effect ripplelink" href="http://slattoforvaltning.se/slatto-och-mathem-se-inleder-samarbete/"><span class="ink" style="height: 40px; width: 40px;"></span>
+                    <img class="lazy-load preload-me is-loaded" src="http://media.slattoforvaltning.se/2016/04/mathem2-40x40.jpg" width="40" height="40" alt="" sizes="40px" srcset="http://media.slattoforvaltning.se/2016/04/mathem2-40x40.jpg 40w, http://media.slattoforvaltning.se/2016/04/mathem2-80x80.jpg 80w"><i></i>
+                    </a>
+                </div>
+                <div class="post-content 7u">
+                    <a href="http://slattoforvaltning.se/slatto-och-mathem-se-inleder-samarbete/"><font><font>Slättö and MatHem.se start cooperation for tenants</font></font></a><br>
+                    <time class="text-secondary" datetime="2016-04-15T12:35:53+00:00"><font><font>April 15, 2016</font></font></time>
+                </div>
+            </article>
+        </li>
+    </ul>
+</section>
